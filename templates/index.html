@@ -23,5 +23,16 @@
             </div>
         </div>
     </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            document.querySelectorAll("button").forEach(button => {
+                button.addEventListener("click", function () {
+                    let boutonClass = this.classList[0];
+                    let boutonNum = boutonClass.replace("butt", "");
+                    window.location.href = `/?btn=${boutonNum}`;
+                });
+            });
+        });
+    </script>
 </body>
 </html>
