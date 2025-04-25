@@ -1,16 +1,26 @@
 <!DOCTYPE html>
 <html lang="fr">
     <head>
+        <!-- Déclaration de l'encodage des caractères pour la page -->
         <meta charset="UTF-8" />
+        
+        <!-- Déclaration du viewport pour une mise en page responsive (adaptée aux appareils mobiles) -->
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        
+        <!-- Lien vers la feuille de style principale (index.css) -->
         <link
             rel="stylesheet"
             href="{{ url_for('static', filename='index.css') }}"
         />
+        
+        <!-- Lien vers une autre feuille de style (style.css) -->
         <link rel="stylesheet" href="../static/style.css" />
+        
+        <!-- Titre de la page affiché dans l'onglet du navigateur -->
         <title>Ma Page</title>
     </head>
     <body>
+        <!-- Image cachée représentant la grille de morpion, utilisée pour afficher le jeu -->
         <img
             hidden
             id="morpionImage"
@@ -19,9 +29,12 @@
             style="width: 650px; height: 450px; border: 2px solid black"
         />
 
+        <!-- Conteneur principal pour les boutons de la grille -->
         <div class="box">
             <div class="img">
+                <!-- Conteneur pour les boutons de la grille du morpion -->
                 <div class="grille_bouton">
+                    <!-- Boutons représentant les cases de la grille de morpion (9 boutons au total) -->
                     <button
                         onclick="refreshPage()"
                         id="bouton"
@@ -70,31 +83,40 @@
                 </div>
             </div>
         </div>
+
         <script>
+            // Attendre que le contenu de la page soit entièrement chargé avant d'exécuter le script
             document.addEventListener("DOMContentLoaded", function () {
-                // Gère le clic sur les boutons
+                // Ajouter un événement de clic pour chaque bouton de la grille
                 document.querySelectorAll("button").forEach((button) => {
                     button.addEventListener("click", function () {
+                        // Extraire le numéro du bouton à partir de la classe du bouton (butt1, butt2, ...)
                         let boutonClass = this.classList[0];
                         let boutonNum = boutonClass.replace("butt", "");
+                        // Rediriger l'utilisateur vers l'URL avec le numéro du bouton cliqué
                         window.location.href = `/?btn=${boutonNum}`;
                     });
                 });
 
+                // Fonction pour mettre à jour l'image de la grille de morpion avec un timestamp unique
                 function updateImage() {
                     let morpionImage = document.getElementById("morpionImage");
                     if (morpionImage) {
+                        // Créer une nouvelle image avec un paramètre de timestamp pour éviter le cache
                         let newImage = new Image();
                         newImage.src =
                             "{{ url_for('static', filename='image/morpion.png') }}?time=" +
                             new Date().getTime();
+                        // Lors du chargement de la nouvelle image, la remplacer dans la page
                         newImage.onload = function () {
                             morpionImage.src = newImage.src;
                         };
                     }
+                    // Répéter la mise à jour toutes les secondes (1000 ms)
                     setTimeout(updateImage, 1000);
                 }
 
+                // Lancer la fonction de mise à jour continue de l'image
                 updateImage();
             });
         </script>
