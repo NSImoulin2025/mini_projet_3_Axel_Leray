@@ -1,56 +1,60 @@
+/* Style global du document */
 html {
-    background-color: azure;
-    height: 600px;
-    cursor: default;
+    background-color: azure; /* Définit une couleur de fond douce pour toute la page */
+    height: 600px;           /* Fixe une hauteur à l'élément html */
+    cursor: default;         /* Définit le curseur par défaut pour tout le document */
 }
 
+/* Style de base du body (aucune marge ni padding) */
 body {
     margin: 0;
     padding: 0;
 }
 
+/* Boîte principale contenant l'interface du jeu */
 .box {
-    margin: 8% 320px;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 450px;
-    width: 650px;
-    background-color: hsl(43, 74%, 49%);
-    border: black solid 4px;
-    border-radius: 14px;
-
+    margin: 8% 320px;                /* Marge verticale de 8% et horizontale fixe de 320px */
+    display: flex;                  /* Active le modèle Flexbox */
+    align-items: center;           /* Centre verticalement le contenu */
+    justify-content: center;       /* Centre horizontalement le contenu */
+    height: 450px;                 /* Hauteur fixe */
+    width: 650px;                  /* Largeur fixe */
+    background-color: hsl(43, 74%, 49%); /* Jaune/orangé chaud (couleur du fond de la boîte) */
+    border: black solid 4px;       /* Bordure noire autour de la boîte */
+    border-radius: 14px;           /* Coins arrondis pour un aspect plus doux */
 }
 
+/* Classe non utilisée ici, mais définie pour gérer l'image via Flexbox */
 .morpionImage {
     display: flex;
     justify-content: center;
     align-items: center;
 }
 
+/* Zone d'affichage du morpion en arrière-plan */
 .img {
-    height: 450px;
-    width: 650px;
-    background: url(image/morpion.png) no-repeat;
-    margin: 20px;
+    height: 450px;                             /* Hauteur identique à celle de .box */
+    width: 650px;                              /* Largeur identique à celle de .box */
+    background: url(image/morpion.png) no-repeat; /* Image de fond représentant la grille */
+    margin: 20px;                              /* Espacement autour de la grille */
 }
 
+/* Conteneur des 9 boutons de la grille */
 .grille_bouton {
-    padding-left: 40px;
-    padding-top: 40px;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 60px;
-    width: max-content;
-    margin: auto;
+    padding-left: 40px;               /* Décalage vers la droite */
+    padding-top: 40px;                /* Décalage vers le bas */
+    display: grid;                    /* Active le système de grille CSS */
+    grid-template-columns: repeat(3, 1fr); /* 3 colonnes de largeur égale */
+    gap: 60px;                        /* Espacement entre les boutons */
+    width: max-content;              /* La largeur s'ajuste au contenu */
+    margin: auto;                    /* Centre la grille horizontalement */
 }
 
+/* Style des boutons transparents superposés à la grille */
 #bouton {
-    height: 80px;
+    height: 80px;        /* Taille carrée du bouton */
     width: 80px;
-    opacity: 0.5%;
-    border: none;
-    cursor: pointer;
-
+    opacity: 0.5%;       /* Très faible opacité, presque invisible */
+    border: none;        /* Aucune bordure visible */
+    cursor: pointer;     /* Curseur changeant pour indiquer un élément cliquable */
 }
