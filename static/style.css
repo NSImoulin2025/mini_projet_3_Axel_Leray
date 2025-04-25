@@ -21,11 +21,15 @@ body {
     border-radius: 14px;
     
 }
-
+.morpionImage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 .img {
     height: 450px;
     width: 650px;
-    background: url(../static/morpion.png) no-repeat;
+    background: url(image/morpion.png) no-repeat;
     margin: 20px;
 }
 .grille_bouton {
