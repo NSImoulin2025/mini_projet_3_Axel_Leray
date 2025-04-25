@@ -8,23 +8,27 @@
     <title>Ma Page</title>
 </head>
 <body>
+    <img hidden id="morpionImage" src="{{ url_for('static', filename='image/morpion.png') }}" alt="Grille de morpion" style="width: 650px; height: 450px; border: 2px solid black;">
+            
     <div class="box">
+        
         <div class="img">
             <div class="grille_bouton">
-                <button href="/action?btn=1" id="bouton"class="butt1"></button>
-                <button id="bouton"class="butt2"></button>
-                <button id="bouton"class="butt3"></button>
-                <button id="bouton"class="butt4"></button>
-                <button id="bouton"class="butt5"></button>
-                <button id="bouton"class="butt6"></button>
-                <button id="bouton"class="butt7"></button>
-                <button id="bouton"class="butt8"></button>
-                <button id="bouton"class="butt9"></button>
+                <button onclick="refreshPage()" id="bouton" class="butt1"></button>
+                <button onclick="refreshPage()" id="bouton" class="butt2"></button>
+                <button onclick="refreshPage()" id="bouton" class="butt3"></button>
+                <button onclick="refreshPage()" id="bouton" class="butt4"></button>
+                <button onclick="refreshPage()" id="bouton" class="butt5"></button>
+                <button onclick="refreshPage()" id="bouton" class="butt6"></button>
+                <button onclick="refreshPage()" id="bouton" class="butt7"></button>
+                <button onclick="refreshPage()" id="bouton" class="butt8"></button>
+                <button onclick="refreshPage()" id="bouton" class="butt9"></button>
             </div>
         </div>
     </div>
     <script>
         document.addEventListener("DOMContentLoaded", function () {
+            // Gère le clic sur les boutons
             document.querySelectorAll("button").forEach(button => {
                 button.addEventListener("click", function () {
                     let boutonClass = this.classList[0];
@@ -32,7 +36,84 @@
                     window.location.href = `/?btn=${boutonNum}`;
                 });
             });
+    
+            // Fonction pour rafraîchir l'image avec un timestamp
+            function updateImage() {
+                let morpionImage = document.getElementById("morpionImage");
+                if (morpionImage) {
+                    let newImage = new Image();
+                    newImage.src = "{{ url_for('static', filename='image/morpion.png') }}?time=" + new Date().getTime();
+                    newImage.onload = function () {
+                        morpionImage.src = newImage.src;
+                    };
+                }
+                setTimeout(updateImage, 1000);
+            }
+    
+            // Lancer la mise à jour continue
+            updateImage();
         });
     </script>
+    
+
+</body>
+</html><!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='index.css') }}">
+    <link rel="stylesheet" href="../static/style.css">
+    <title>Ma Page</title>
+</head>
+<body>
+    <img hidden id="morpionImage" src="{{ url_for('static', filename='image/morpion.png') }}" alt="Grille de morpion" style="width: 650px; height: 450px; border: 2px solid black;">
+            
+    <div class="box">
+        
+        <div class="img">
+            <div class="grille_bouton">
+                <button onclick="refreshPage()" id="bouton" class="butt1"></button>
+                <button onclick="refreshPage()" id="bouton" class="butt2"></button>
+                <button onclick="refreshPage()" id="bouton" class="butt3"></button>
+                <button onclick="refreshPage()" id="bouton" class="butt4"></button>
+                <button onclick="refreshPage()" id="bouton" class="butt5"></button>
+                <button onclick="refreshPage()" id="bouton" class="butt6"></button>
+                <button onclick="refreshPage()" id="bouton" class="butt7"></button>
+                <button onclick="refreshPage()" id="bouton" class="butt8"></button>
+                <button onclick="refreshPage()" id="bouton" class="butt9"></button>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            // Gère le clic sur les boutons
+            document.querySelectorAll("button").forEach(button => {
+                button.addEventListener("click", function () {
+                    let boutonClass = this.classList[0];
+                    let boutonNum = boutonClass.replace("butt", "");
+                    window.location.href = `/?btn=${boutonNum}`;
+                });
+            });
+    
+            // Fonction pour rafraîchir l'image avec un timestamp
+            function updateImage() {
+                let morpionImage = document.getElementById("morpionImage");
+                if (morpionImage) {
+                    let newImage = new Image();
+                    newImage.src = "{{ url_for('static', filename='image/morpion.png') }}?time=" + new Date().getTime();
+                    newImage.onload = function () {
+                        morpionImage.src = newImage.src;
+                    };
+                }
+                setTimeout(updateImage, 1000);
+            }
+    
+            // Lancer la mise à jour continue
+            updateImage();
+        });
+    </script>
+    
+
 </body>
 </html>
