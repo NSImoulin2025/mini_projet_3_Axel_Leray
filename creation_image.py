@@ -1,9 +1,8 @@
-
 import cairo
 import colorsys
 
 
-def dessiner_grille(output_file):
+def dessiner_grille(output_file="morpion.png"):
     width, height = 650, 450
     margin = 15
     size = height - 2 * margin
@@ -65,7 +64,7 @@ def dessiner_croix_rouge(image_name, coordinates, output_file):
     surface.write_to_png(output_file)
 
 
-def dessiner_rond_bleu(image_name, coordinates, output_file="morpion_rond.png"):
+def dessiner_rond_bleu(image_name, coordinates, output_file):
     image_surface = cairo.ImageSurface.create_from_png(image_name)
     width = image_surface.get_width()
     height = image_surface.get_height()
@@ -76,13 +75,16 @@ def dessiner_rond_bleu(image_name, coordinates, output_file="morpion_rond.png"):
     ctx.set_source_surface(image_surface, 0, 0)
     ctx.paint()
 
-    ctx.set_source_rgb(0, 0, 1)  # Bleu
+    ctx.set_source_rgb(0, 0, 1)
     ctx.set_line_width(5)
 
     x, y = coordinates
     rayon = 40
 
-    ctx.arc(x, y, rayon, 0, 2 * 3.14159)  # Cercle
+    ctx.arc(x, y, rayon, 0, 2 * 3.14159)
     ctx.stroke()
 
     surface.write_to_png(output_file)
+
+if __name__ == "__main__":
+    dessiner_grille()
