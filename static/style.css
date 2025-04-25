@@ -3,6 +3,7 @@ html {
     height: 600px;
     cursor: default;
 }
+
 body {
     margin: 0;
     padding: 0;
@@ -10,7 +11,7 @@ body {
 
 .box {
     margin: 8% 320px;
-    
+
     display: flex;
     align-items: center;
     justify-content: center;
@@ -19,19 +20,22 @@ body {
     background-color: hsl(43, 74%, 49%);
     border: black solid 4px;
     border-radius: 14px;
-    
+
 }
+
 .morpionImage {
     display: flex;
     justify-content: center;
     align-items: center;
 }
+
 .img {
     height: 450px;
     width: 650px;
     background: url(image/morpion.png) no-repeat;
     margin: 20px;
 }
+
 .grille_bouton {
     padding-left: 40px;
     padding-top: 40px;
@@ -41,6 +45,7 @@ body {
     width: max-content;
     margin: auto;
 }
+
 #bouton {
     height: 80px;
     width: 80px;
